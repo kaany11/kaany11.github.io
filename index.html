@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kaoutar | Data engineer & climate data scientist</title>
+<title>Kaoutar | Data engineer | climate data scientist</title>
 <meta name="description" content="Portfolio de Kaoutar : data engineering, climat et énergie.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,7 +131,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:24px;font:50
 <header class="hero" id="top">
   <canvas id="wind" aria-hidden="true"></canvas>
   <div class="wrap">
-    <h1>Kaoutar<br>[Nom]</h1>
+    <h1>Kaoutar<br>[ANAYANI]</h1>
     <p class="role">Data engineer &amp; climate data scientist</p>
     <p class="lead">Je construis des pipelines de données qui transforment les observations météo et l’énergie en décisions utiles.</p>
     <div class="cta">
@@ -268,7 +268,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:24px;font:50
     <h2>Contact</h2>
     <p>Je cherche un poste en data engineering ou en data climat. Écris-moi, je réponds vite.</p>
     <div class="cta">
-      <a class="btn fill" id="mail" href="mailto:ton.email@exemple.com">ton.email@exemple.com</a>
+      <a class="btn fill" id="mail" href="mailto:anaykaou@gmail.com">anaykaou@gmail.com</a>
       <button class="btn" id="copy" type="button">Copier l’email</button>
       <a class="btn" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">GitHub</a>
@@ -279,7 +279,7 @@ footer{margin-top:80px;border-top:1px solid var(--line);padding-top:24px;font:50
 </main>
 
 <script>
-/* ---------- Vent simulé (hero) : le curseur pousse l’air dans sa direction ---------- */
+/* wind simulator */
 (()=>{
 const cv=document.getElementById('wind'),cx=cv.getContext('2d'),hero=cv.parentElement;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -299,7 +299,7 @@ function size(){
   P=Array.from({length:Math.min(1300,Math.floor(W*H/1200))},()=>({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0}));
   if(reduce){for(let i=0;i<160;i++)draw()}
 }
-/* le curseur en mouvement injecte de la quantité de mouvement dans l’air autour de lui */
+
 function gust(x,y,vx,vy){
   for(let j=Math.max(0,(y-R)/C|0);j<=Math.min(gh-1,(y+R)/C|0);j++)
     for(let i=Math.max(0,(x-R)/C|0);i<=Math.min(gw-1,(x+R)/C|0);i++){
@@ -311,7 +311,7 @@ function gust(x,y,vx,vy){
       }
     }
 }
-/* l’air se diffuse vers les cellules voisines puis se calme peu à peu */
+
 function diffuse(){
   for(let j=1;j<gh-1;j++)for(let i=1;i<gw-1;i++){
     const k=j*gw+i;
@@ -327,7 +327,7 @@ function draw(){
   const a=new Path2D(),b=new Path2D();
   for(const p of P){
     const[bx,by]=base(p.x,p.y),k=cell(p.x,p.y);
-    /* inertie : la particule accélère vers la vitesse du vent local, sans saut brusque */
+
     p.vx+=(bx+gx[k]*.6-p.vx)*.13;p.vy+=(by+gy[k]*.6-p.vy)*.13;
     const nx=p.x+p.vx,ny=p.y+p.vy,fast=p.vx*p.vx+p.vy*p.vy>7;
     (fast?b:a).moveTo(p.x,p.y);(fast?b:a).lineTo(nx,ny);
