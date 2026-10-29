@@ -1,2 +1,415 @@
-<h1>Bonjour, je suis Kaoutar</h1>
-<p>Mon portfolio arrive bientôt.</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaoutar | Data engineer & climate data scientist</title>
+<meta name="description" content="Portfolio de Kaoutar : data engineering, climat et énergie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{--bg:#E9ECEF;--ink:#161B21;--blue:#3F5F7F;--mute:#59636E;--line:#D0D6DC;--card:#F6F7F9;--tag:#DCE2E8;
+--sans:'Bricolage Grotesque',system-ui,sans-serif;--serif:'Newsreader',Georgia,serif}
+.dark{--bg:#171C22;--ink:#E9ECEF;--blue:#9DB4CB;--mute:#9AA5B1;--line:#2D353E;--card:#1F262D;--tag:#2B343D}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.15rem;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+#bar{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--blue);transform-origin:0 50%;transform:scaleX(0);z-index:20}
+ 
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(233,236,239,.84);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:16px}
+nav b{font:800 1.05rem var(--sans);letter-spacing:-.01em}
+nav ul{display:flex;gap:4px;list-style:none;padding:0;flex-wrap:wrap}
+nav a{font:600 .92rem var(--sans);text-decoration:none;padding:6px 12px;border-radius:99px;color:var(--mute);transition:background .25s,color .25s}
+nav a:hover{color:var(--ink)}
+nav a.on{background:var(--ink);color:var(--bg)}
+ 
+/* hero */
+.hero{position:relative;min-height:calc(100vh - 56px);display:flex;align-items:center;overflow:hidden}
+#wind{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;pointer-events:none;padding-top:40px;padding-bottom:110px}
+.hero a,.hero button{pointer-events:auto}
+.hero h1{font:800 clamp(3.2rem,11vw,8rem)/.92 var(--sans);letter-spacing:-.045em}
+.hero .role{font:600 clamp(1.15rem,2.6vw,1.7rem) var(--sans);color:var(--blue);margin-top:22px}
+.hero .lead{max-width:34em;margin-top:14px;color:var(--mute)}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{font:600 1rem var(--sans);text-decoration:none;padding:12px 22px;border-radius:99px;border:2px solid var(--ink);background:none;color:var(--ink);cursor:pointer;transition:transform .25s,background .25s,color .25s,border-color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn.fill{background:var(--ink);color:var(--bg)}
+.btn.fill:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.hero .wrap>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .wrap>*:nth-child(2){animation-delay:.12s}.hero .wrap>*:nth-child(3){animation-delay:.24s}.hero .wrap>*:nth-child(4){animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+ 
+/* sections : chaque partie recouvre la précédente */
+section.s{position:relative;background:var(--bg);color:var(--ink);padding:112px 0 140px;margin-top:-40px;border-radius:40px 40px 0 0;box-shadow:0 -14px 40px rgba(22,27,33,.08)}
+.js .rv{opacity:0;transform:translateY(56px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+h2{font:800 clamp(2rem,5vw,3.2rem)/1 var(--sans);letter-spacing:-.03em;margin-bottom:40px}
+h2::after{content:"";display:block;height:3px;width:0;background:var(--blue);margin-top:16px;transition:width .9s .35s ease}
+.in h2::after,html:not(.js) h2::after{width:72px}
+ 
+/* à propos */
+.about{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:start}
+.photo{position:relative;aspect-ratio:4/5;border-radius:48% 52% 46% 54%/42% 46% 54% 58%;background:linear-gradient(160deg,#DCE1E6,#C4CCD5);overflow:hidden;display:grid;place-items:center;text-align:center;font:600 .95rem var(--sans);color:var(--mute);border:2px dashed var(--blue);transition:border-radius .8s ease}
+.photo:hover{border-radius:54% 46% 52% 48%/54% 40% 60% 46%}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.about p+p{margin-top:1em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{font:600 .88rem var(--sans);padding:6px 14px;border-radius:99px;background:var(--card);border:1px solid var(--line);transition:border-color .25s,transform .25s}
+.chip:hover{border-color:var(--blue);transform:translateY(-2px)}
+ 
+/* carrousel de blocs (formation, expérience) */
+.ctrl{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{font:600 .92rem var(--sans);padding:8px 18px;border-radius:99px;border:1.5px solid var(--line);background:none;color:var(--ink);cursor:pointer;transition:all .25s}
+.tab:hover{border-color:var(--blue)}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.nav2{display:flex;align-items:center;gap:10px;font:600 .9rem var(--sans);color:var(--mute)}
+.arrow{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:none;color:var(--ink);font:600 1.3rem/1 var(--sans);cursor:pointer;transition:all .25s}
+.arrow:hover:not(:disabled){background:var(--blue);border-color:var(--blue);color:#fff;transform:scale(1.08)}
+.arrow:disabled{opacity:.35;cursor:default}
+.viewport{display:grid;overflow:hidden;touch-action:pan-y}
+.slide{grid-area:1/1;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:42px;transition:transform .7s cubic-bezier(.65,0,.35,1),opacity .55s ease}
+.slide[data-s=before]{transform:translateX(-90px) scale(.96);opacity:0;pointer-events:none}
+.slide[data-s=after]{transform:translateX(90px) scale(.96);opacity:0;pointer-events:none}
+.when{font:600 .9rem var(--sans);color:var(--blue)}
+.slide h3{font:600 clamp(1.4rem,3vw,1.9rem)/1.2 var(--sans);margin:6px 0 2px}
+.where{color:var(--mute);margin-bottom:14px}
+.slide ul{padding-left:20px;margin-bottom:6px}
+.slide li{margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags span{font:600 .78rem var(--sans);background:var(--tag);color:var(--blue);padding:3px 10px;border-radius:99px}
+ 
+/* projets */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:-16px 0 28px}
+.f{font:600 .92rem var(--sans);padding:8px 18px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:all .25s}
+.f:hover{border-color:var(--blue)}
+.f[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px;text-decoration:none;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;animation:pop .4s ease both}
+.card::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--blue);transition:width .4s}
+.card:hover{transform:translateY(-5px);border-color:var(--blue)}
+.card:hover::after{width:100%}
+.card[hidden]{display:none}
+.card h3{font:600 1.25rem/1.25 var(--sans)}
+.card p{font-size:1.02rem;color:var(--mute);flex:1}
+.card .go{font:600 .92rem var(--sans);color:var(--blue)}
+@keyframes pop{from{opacity:0;transform:scale(.95)}}
+ 
+/* contact */
+.contact p{max-width:30em;color:var(--mute);margin-bottom:26px}
+footer{margin-top:80px;border-top:1px solid var(--line);padding-top:24px;font:500 .9rem var(--sans);color:var(--mute)}
+ 
+@media(max-width:760px){.about{grid-template-columns:1fr;gap:32px}.photo{max-width:260px}nav b{display:none}nav .wrap{justify-content:center}.slide{padding:28px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav>
+  <div class="wrap">
+    <b>Kaoutar</b>
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#education">Formation</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+ 
+<main>
+<!-- ========== HERO ========== -->
+<header class="hero" id="top">
+  <canvas id="wind" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1>Kaoutar<br>[Nom]</h1>
+    <p class="role">Data engineer &amp; climate data scientist</p>
+    <p class="lead">Je construis des pipelines de données qui transforment les observations météo et l’énergie en décisions utiles.</p>
+    <div class="cta">
+      <a class="btn fill" href="#projects">Voir mes projets</a>
+      <a class="btn" href="#contact">Me contacter</a>
+    </div>
+  </div>
+</header>
+ 
+<!-- ========== À PROPOS ========== -->
+<section class="s" id="about">
+  <div class="wrap rv">
+    <h2>À propos</h2>
+    <div class="about">
+      <!-- PHOTO : ajoute un fichier "photo.jpg" dans ton dépôt, elle s’affichera ici automatiquement -->
+      <figure class="photo">
+        <span>Ta photo ici<br>(photo.jpg)</span>
+        <img src="photo.jpg" alt="Portrait de Kaoutar" onerror="this.remove()">
+      </figure>
+      <div>
+        <p>Ingénieure en météorologie, je finis un master en HPC et Big Data. Mon terrain de jeu : le croisement entre données climatiques, infrastructures énergétiques et ingénierie des données.</p>
+        <p>[Ajoute ici 2 ou 3 phrases : ce qui te motive, le type de poste que tu cherches, ce qui te distingue.]</p>
+        <div class="chips" aria-label="Compétences">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">PostgreSQL</span>
+          <span class="chip">BigQuery</span><span class="chip">Airflow</span><span class="chip">Docker</span>
+          <span class="chip">NetCDF / xarray</span><span class="chip">HPC / MPI</span><span class="chip">Machine learning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ========== FORMATION ========== -->
+<section class="s dark" id="education">
+  <div class="wrap rv">
+    <h2>Formation</h2>
+    <!-- Pour ajouter une formation : copie un bloc <article class="slide"> en entier. Le bouton se crée tout seul à partir de data-label -->
+    <div data-slider>
+      <div class="ctrl">
+        <div class="tabs"></div>
+        <div class="nav2"><button class="arrow prev" aria-label="Formation précédente">‹</button><span class="count"></span><button class="arrow next" aria-label="Formation suivante">›</button></div>
+      </div>
+      <div class="viewport">
+        <article class="slide" data-label="Master 2 HPC &amp; Big Data">
+          <span class="when">20XX – 20XX</span>
+          <h3>Master 2 HPC &amp; Big Data</h3>
+          <p class="where">ENSEEIHT, Toulouse</p>
+          <p>[Spécialisation, matières clés, projet marquant.]</p>
+          <div class="tags"><span>HPC</span><span>Big Data</span></div>
+        </article>
+        <article class="slide" data-label="Ingénieur en météorologie">
+          <span class="when">20XX – 20XX</span>
+          <h3>Diplôme d’ingénieur en météorologie</h3>
+          <p class="where">ENM / EHTP</p>
+          <p>[Spécialisation, matières clés, projet marquant.]</p>
+          <div class="tags"><span>Météorologie</span><span>Climat</span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ========== EXPÉRIENCE ========== -->
+<section class="s" id="experience">
+  <div class="wrap rv">
+    <h2>Expérience</h2>
+    <div data-slider>
+      <div class="ctrl">
+        <div class="tabs"></div>
+        <div class="nav2"><button class="arrow prev" aria-label="Expérience précédente">‹</button><span class="count"></span><button class="arrow next" aria-label="Expérience suivante">›</button></div>
+      </div>
+      <div class="viewport">
+        <article class="slide" data-label="PFE ENEDIS">
+          <span class="when">20XX – 20XX</span>
+          <h3>Projet de fin d’études</h3>
+          <p class="where">ENEDIS, [Ville]</p>
+          <ul>
+            <li>[Mission principale : résilience du réseau électrique face au vent.]</li>
+            <li>[Résultat chiffré ou livrable concret.]</li>
+          </ul>
+          <div class="tags"><span>Python</span><span>Climat</span><span>Réseau électrique</span></div>
+        </article>
+        <article class="slide" data-label="[Autre expérience]">
+          <span class="when">20XX</span>
+          <h3>[Intitulé du stage ou du poste]</h3>
+          <p class="where">[Organisation, Ville]</p>
+          <ul>
+            <li>[Ce que tu as fait.]</li>
+            <li>[Ce que ça a apporté.]</li>
+          </ul>
+          <div class="tags"><span>[Outil]</span><span>[Outil]</span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ========== PROJETS ========== -->
+<section class="s dark" id="projects">
+  <div class="wrap rv">
+    <h2>Projets</h2>
+    <div class="filters" role="group" aria-label="Filtrer les projets">
+      <button class="f" data-f="all" aria-pressed="true">Tous</button>
+      <button class="f" data-f="data" aria-pressed="false">Data engineering</button>
+      <button class="f" data-f="climat" aria-pressed="false">Climat &amp; énergie</button>
+    </div>
+    <div class="grid">
+      <!-- Remplace href="#" par le lien de ton dépôt GitHub. data-t = catégories -->
+      <a class="card" href="#" data-t="climat data">
+        <div class="tags"><span>Climat</span><span>Data</span></div>
+        <h3>EnergyPulse FR</h3>
+        <p>Croisement des prix de l’électricité ENTSO-E avec les données météo ERA5 pour mesurer l’effet du climat sur le marché.</p>
+        <span class="go">Voir le code</span>
+      </a>
+      <a class="card" href="#" data-t="data">
+        <div class="tags"><span>Data engineering</span></div>
+        <h3>Pipeline météo vers PostgreSQL</h3>
+        <p>[Décris le flux : source, transformation, stockage, automatisation.]</p>
+        <span class="go">Voir le code</span>
+      </a>
+      <a class="card" href="#" data-t="data">
+        <div class="tags"><span>Data engineering</span></div>
+        <h3>ETL de CSV vers BigQuery</h3>
+        <p>[Décris le projet : volume de données, outils, résultat.]</p>
+        <span class="go">Voir le code</span>
+      </a>
+    </div>
+  </div>
+</section>
+ 
+<!-- ========== CONTACT ========== -->
+<section class="s contact" id="contact">
+  <div class="wrap rv">
+    <h2>Contact</h2>
+    <p>Je cherche un poste en data engineering ou en data climat. Écris-moi, je réponds vite.</p>
+    <div class="cta">
+      <a class="btn fill" id="mail" href="mailto:ton.email@exemple.com">ton.email@exemple.com</a>
+      <button class="btn" id="copy" type="button">Copier l’email</button>
+      <a class="btn" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <footer>© <span id="y"></span> Kaoutar [Nom]</footer>
+  </div>
+</section>
+</main>
+ 
+<script>
+/* ---------- Vent simulé (hero) : le curseur pousse l’air dans sa direction ---------- */
+(()=>{
+const cv=document.getElementById('wind'),cx=cv.getContext('2d'),hero=cv.parentElement;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const C=22,R=140; /* C : taille d’une cellule d’air, R : rayon d’influence du curseur */
+let W,H,P=[],gw,gh,gx,gy,tx,ty,lx=null,ly=null,t=0,on=true;
+function base(x,y){
+  const a=Math.sin(x*.0035+t*.25)*1.6+Math.cos(y*.0045-t*.2)*1.6+Math.sin((x+y)*.002+t*.1);
+  return[Math.cos(a)*1.4,Math.sin(a)*1.4];
+}
+function cell(x,y){return Math.max(0,Math.min(gh-1,y/C|0))*gw+Math.max(0,Math.min(gw-1,x/C|0))}
+function size(){
+  const d=devicePixelRatio||1,r=hero.getBoundingClientRect();
+  W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);
+  cx.fillStyle='#E9ECEF';cx.fillRect(0,0,W,H);
+  gw=Math.ceil(W/C);gh=Math.ceil(H/C);
+  gx=new Float32Array(gw*gh);gy=new Float32Array(gw*gh);tx=new Float32Array(gw*gh);ty=new Float32Array(gw*gh);
+  P=Array.from({length:Math.min(1300,Math.floor(W*H/1200))},()=>({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0}));
+  if(reduce){for(let i=0;i<160;i++)draw()}
+}
+/* le curseur en mouvement injecte de la quantité de mouvement dans l’air autour de lui */
+function gust(x,y,vx,vy){
+  for(let j=Math.max(0,(y-R)/C|0);j<=Math.min(gh-1,(y+R)/C|0);j++)
+    for(let i=Math.max(0,(x-R)/C|0);i<=Math.min(gw-1,(x+R)/C|0);i++){
+      const d=Math.hypot((i+.5)*C-x,(j+.5)*C-y);
+      if(d<R){
+        const f=(1-d/R)**2*.4,k=j*gw+i;
+        gx[k]=Math.max(-14,Math.min(14,gx[k]+vx*f));
+        gy[k]=Math.max(-14,Math.min(14,gy[k]+vy*f));
+      }
+    }
+}
+/* l’air se diffuse vers les cellules voisines puis se calme peu à peu */
+function diffuse(){
+  for(let j=1;j<gh-1;j++)for(let i=1;i<gw-1;i++){
+    const k=j*gw+i;
+    tx[k]=(gx[k]*4+gx[k-1]+gx[k+1]+gx[k-gw]+gx[k+gw])/8*.968;
+    ty[k]=(gy[k]*4+gy[k-1]+gy[k+1]+gy[k-gw]+gy[k+gw])/8*.968;
+  }
+  [gx,tx]=[tx,gx];[gy,ty]=[ty,gy];
+}
+function draw(){
+  diffuse();
+  cx.fillStyle='rgba(233,236,239,.07)';cx.fillRect(0,0,W,H);
+  cx.lineWidth=1.2;
+  const a=new Path2D(),b=new Path2D();
+  for(const p of P){
+    const[bx,by]=base(p.x,p.y),k=cell(p.x,p.y);
+    /* inertie : la particule accélère vers la vitesse du vent local, sans saut brusque */
+    p.vx+=(bx+gx[k]*.6-p.vx)*.13;p.vy+=(by+gy[k]*.6-p.vy)*.13;
+    const nx=p.x+p.vx,ny=p.y+p.vy,fast=p.vx*p.vx+p.vy*p.vy>7;
+    (fast?b:a).moveTo(p.x,p.y);(fast?b:a).lineTo(nx,ny);
+    p.x=nx;p.y=ny;
+    if(p.x<0||p.x>W||p.y<0||p.y>H||Math.random()<.004){p.x=Math.random()*W;p.y=Math.random()*H;p.vx=p.vy=0}
+  }
+  cx.strokeStyle='rgba(63,95,127,.5)';cx.stroke(a);
+  cx.strokeStyle='rgba(22,27,33,.78)';cx.stroke(b);
+  t+=.006;
+}
+function loop(){if(on&&!reduce)draw();requestAnimationFrame(loop)}
+hero.addEventListener('pointermove',e=>{
+  const r=hero.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+  if(lx!==null&&!reduce)gust(x,y,x-lx,y-ly);
+  lx=x;ly=y;
+});
+hero.addEventListener('pointerleave',()=>{lx=ly=null});
+new IntersectionObserver(e=>on=e[0].isIntersecting).observe(hero);
+addEventListener('resize',size);
+size();loop();
+})();
+ 
+/* ---------- Apparition des parties au scroll + barre de progression ---------- */
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(r=>rio.observe(r));
+const bar=document.getElementById('bar');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  bar.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight||1))+')';
+},{passive:true});
+ 
+/* ---------- Navigation active ---------- */
+const links=[...document.querySelectorAll('nav a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.hash==='#'+e.target.id));
+}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section').forEach(s=>io.observe(s));
+ 
+/* ---------- Carrousels de blocs ---------- */
+document.querySelectorAll('[data-slider]').forEach(s=>{
+  const sl=[...s.querySelectorAll('.slide')],tabs=s.querySelector('.tabs'),cnt=s.querySelector('.count'),
+        prev=s.querySelector('.prev'),next=s.querySelector('.next');
+  let i=0,x0=null;
+  const bt=sl.map((x,k)=>{
+    const b=document.createElement('button');
+    b.className='tab';b.type='button';b.textContent=x.dataset.label;b.onclick=()=>go(k);
+    tabs.append(b);return b;
+  });
+  function go(n){
+    i=Math.max(0,Math.min(n,sl.length-1));
+    sl.forEach((x,k)=>{x.dataset.s=k<i?'before':k>i?'after':'on';x.inert=k!==i});
+    bt.forEach((b,k)=>b.setAttribute('aria-selected',k===i));
+    cnt.textContent=(i+1)+' / '+sl.length;
+    prev.disabled=i===0;next.disabled=i===sl.length-1;
+  }
+  prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);
+  s.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+  s.addEventListener('pointerdown',e=>x0=e.clientX);
+  s.addEventListener('pointerup',e=>{if(x0===null)return;const d=e.clientX-x0;if(Math.abs(d)>60)go(i+(d<0?1:-1));x0=null});
+  go(0);
+});
+ 
+/* ---------- Filtre des projets ---------- */
+const fs=document.querySelectorAll('.f'),cards=document.querySelectorAll('.card');
+fs.forEach(f=>f.addEventListener('click',()=>{
+  fs.forEach(x=>x.setAttribute('aria-pressed',x===f));
+  cards.forEach(c=>{
+    const show=f.dataset.f==='all'||c.dataset.t.split(' ').includes(f.dataset.f);
+    c.hidden=!show;
+    if(show){c.style.animation='none';c.offsetHeight;c.style.animation=''}
+  });
+}));
+ 
+/* ---------- Contact ---------- */
+const copy=document.getElementById('copy'),mail=document.getElementById('mail');
+copy.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(mail.textContent.trim());copy.textContent='Email copié'}
+  catch{copy.textContent='Copie impossible'}
+  setTimeout(()=>copy.textContent='Copier l’email',1800);
+});
+document.getElementById('y').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
+ 
